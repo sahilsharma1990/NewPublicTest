@@ -17,14 +17,24 @@ public class HomePage extends TestBase{
 	@FindBy(xpath="//a[@title='View my shopping cart']")
 	WebElement cartlink;
 	
+	@FindBy(xpath="//*[@title='Addresses']")
+	WebElement myaddressesLink;
+	
 	public HomePage(){
 		PageFactory.initElements(driver, this);
 	}
 	
 	
 	//Actions
-	public boolean verifyHomePageLogo() {
+	public boolean validateHomePageLogo() {
 		return homepagelogo.isDisplayed();
+	}
+	public String validateHomePageTitle() {
+		return driver.getTitle();
+	}
+	public MyAddressesPage clickOnMyAddressesLink() {
+		myaddressesLink.click();
+		return new MyAddressesPage();
 	}
 	public CartPage clickCartLink() {
 		cartlink.click();
