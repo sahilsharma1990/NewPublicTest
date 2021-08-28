@@ -98,8 +98,8 @@ public class TestBase {
 		 * ); FileUtils.copyFile(srcFile, destFile);
 		 */
 		File file1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(file1,
-				new File("D:\\Workspace_Auto\\AutomationFramework\\src\\main\\resources\\Screenshot.png"));
+		String currentDir = System.getProperty("user.dir");
+		FileUtils.copyFile(file1, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));	
 
 	}
 

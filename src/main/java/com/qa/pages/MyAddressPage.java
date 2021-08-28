@@ -26,6 +26,9 @@ public class MyAddressPage extends TestBase{
 	@FindBy(id="phone")
 	WebElement homephone;
 	
+	@FindBy(id="address1")
+	WebElement address1;
+	
 	@FindBy(id="phone_mobile")
 	WebElement phone_mobile;
 	
@@ -36,12 +39,13 @@ public class MyAddressPage extends TestBase{
 		PageFactory.initElements(driver, this);
 	}
 	
-	public MyAddressesPage addNewAddress(String fn,String ln,String city,String state,String phone,String zipcode) {
+	public MyAddressesPage addNewAddress(String fn,String ln,String city,String state,String phone,String zipcode,String address) {
 		firstName.sendKeys(fn);
 		lastName.sendKeys(ln);
 		cityv.sendKeys(city);		
 		postcode.sendKeys(zipcode);
 		homephone.sendKeys(phone);
+		address1.sendKeys(address);
 		Select s=new Select(stateV);
 		s.selectByVisibleText(state);
 		save.click();
