@@ -32,7 +32,7 @@ public class HomePageTests extends TestBase {
 		boolean b=homepage.validateHomePageLogo();
 		Assert.assertTrue(b);
 	}
-	@Test(priority=2)
+	@Test(priority=2,dependsOnMethods = "verifyHomePageLogoTest")
 	public void verifyHomePageTitileTest() {
 		String title=homepage.validateHomePageTitle();
 		Assert.assertEquals("Homepage Title not Matched", "My account - My Store", title);
