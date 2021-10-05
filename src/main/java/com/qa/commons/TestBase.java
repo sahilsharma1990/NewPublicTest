@@ -12,8 +12,12 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
 	public static WebDriver driver;
@@ -50,14 +54,23 @@ public class TestBase {
 	public static void initialization() {
 		String url = prop.getProperty("url");
 		if (prop.getProperty("browser").equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver",
-					"C:\\Users\\s5sharma\\Downloads\\Automation Drivers\\chromedriver.exe");
-			driver = new ChromeDriver();
+			// This is manual part for setup up the driver
+			//System.setProperty("webdriver.chrome.driver","C:\\Users\\s5sharma\\Downloads\\Automation Drivers\\chromedriver.exe");
+			// We can use Webdriver Manager to Launch the Chrome Driver
+			WebDriverManager.chromedriver().setup();
+	
+			ChromeOptions coptions=new ChromeOptions();
+			coptions.addArguments("--incognito");
+			driver = new ChromeDriver(coptions);
 
 		} else if (prop.getProperty("browser").equalsIgnoreCase("FF")) {
-			System.setProperty("webdrivr.gecko.driver",
-					"C:\\Users\\s5sharma\\Downloads\\Automation Drivers\\geckodriver.exe");
-			driver = new FirefoxDriver();
+			// This is manual part for setup up the driver
+			System.setProperty("webdrivr.gecko.driver","C:\\Users\\s5sharma\\Downloads\\Automation Drivers\\geckodriver.exe");
+			// We can use Webdriver Manager to Launch the Chrome Driver
+			WebDriverManager.firefoxdriver().setup();
+			FirefoxOptions foptions=new FirefoxOptions();
+			foptions.addArguments("-private");
+			driver = new FirefoxDriver(foptions);
 
 		} else if (prop.getProperty("browser").equalsIgnoreCase("IE")) {
 

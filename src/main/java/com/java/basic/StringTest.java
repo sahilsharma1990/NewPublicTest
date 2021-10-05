@@ -6,7 +6,7 @@ public class StringTest {
 		String[] arr = { "Sapient", "I", "from", "am" };
 		// String [] out = { "I", "am","from","Sapient"}
 
-		String[] out = { "fram", "I", "froe", "am" };
+		String[] out = { "frae", "am", "I", "frad" };
 		String temp;
 		for (int i = 0; i < out.length; i++) {
 			for (int j = 0; j < out.length - i - 1; j++) {
@@ -27,13 +27,9 @@ public class StringTest {
 						else if (out[j].charAt(k) == out[j + 1].charAt(k)) {
 							continue;
 						}
-						else if (out[j].charAt(k) < out[j + 1].charAt(k)) {
-							temp = out[j+1];
-							out[j+1] = out[j ];
-							out[j] = temp;
-						}
 						
-					} 
+						
+					}
 				}
 
 			}
@@ -42,7 +38,8 @@ public class StringTest {
 		for (String a : out) {
 			System.out.println(a);
 		}
-
+		String s="Sahil";
+		
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.java.basic;
 
+import java.io.IOException;
+
 public class ChildCons extends ParentCons{
 	
 	int rollno;
@@ -14,6 +16,10 @@ public class ChildCons extends ParentCons{
 		this.rollno=rollno;
 		this.marks=marks;
 		System.out.println(" Child Constructor is Invoked ");
+	}
+	
+	public void m1() throws IOException{
+		
 	}
 
 }
